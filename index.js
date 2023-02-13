@@ -1,6 +1,6 @@
 var text = "";
 var currentDate = new Date();
-var januaryFirst = new Date(2023, 0, 1);
+var januaryFirst = new Date(2023, 1, 12);
 const dayNumber = document.getElementById("dayNumber");
 sharing = document.getElementById("score");
 var daysUntilJanuaryFirst = daysBetween(currentDate, januaryFirst);
@@ -242,7 +242,7 @@ else
 }
 
 
-if(number1 > 1000 ){
+if(number1 > 1000 || number1 == -1){
   document.getElementById("semantic_score1").value = 0;
 } else if (number1 < 500 && number1 > 100) {
   document.getElementById("semantic_score1").value = 25- (100 * (number1 / 25000));
@@ -258,7 +258,7 @@ if(number1 > 1000 ){
   {
     long_johnson = counter+1;
   }
-} else if (number1 != -1){
+} else if (number1 == 0){
 document.getElementById("semantic_score1").value = 100;
 } else if (number1 == -1){
   document.getElementById("semantic_score1").value = 0;
@@ -266,7 +266,7 @@ document.getElementById("semantic_score1").value = 100;
 
 
 
-if(number2 > 1000 ){
+if(number2 > 1000 || number2 == -1){
   document.getElementById("semantic_score2").value = 0;
 } else if (number2 < 500 && number2 > 100) {
   document.getElementById("semantic_score2").value = 25- (100 * (number2 / 25000));
@@ -282,7 +282,7 @@ if(number2 > 1000 ){
   {
     long_johnson = counter;
   }
-} else if (number2 != -1){
+} else if (number2 == 0){
   document.getElementById("semantic_score2").value = 100;
   } else if (number2 == -1){
     document.getElementById("semantic_score2").value = 0;
@@ -395,7 +395,7 @@ function toggleshare() {
   }
 
 
-  document.getElementById("final-3").innerHTML=((counter +1 )+ " Attempts" + attemptEmojis)
+  document.getElementById("final-3").innerHTML=((counter +1 )+ " Attempts " + attemptEmojis)
   
  // let winText = ((counter +1 )+ " Attempts" + attemptEmojis);
 
@@ -411,7 +411,7 @@ function toggleshare() {
 {
   document.getElementById("final-4").innerHTML=("3/3 Hints ⬛⬛⬛ ")
 }
-  
+  copyFunction();
   
 }
 
@@ -436,6 +436,7 @@ function copyFunction(){
   let yellow_number = 0
   yellow_number = (long_johnson/(counter+1))*5 +1
   yellow_number = Math.floor(yellow_number)
+  let done = false
   for(let i = 1; i < 6; i++)
   {
     if (i==5)
@@ -463,12 +464,23 @@ ${counter} Attempts ${attemptEmojis}
 ${hintTxt}
 #backwords
 backwords.xyz` 
-  document.getElementById("plswork").value = copyString;
+document.getElementById("plswork").value = copyString;
   inputElement.value = copyString;
   document.body.appendChild(inputElement);
   document.getElementById("plswork").select();
   document.execCommand('copy');
   document.body.removeChild(inputElement);
+
+
+
+  let twitterString = 
+ `Backwords 0${dayN}%0A
+${counter} Attempts ${attemptEmojis}%0A
+${hintTxt}%0A
+backwords.xyz%0A`
+  const link = `https://twitter.com/intent/tweet?text=${twitterString}&hashtags=backwords`; 
+  document.getElementById("tweet-balls").href=link;
+
 }
 
 

@@ -32,10 +32,11 @@
     <div class="popup" id="popup-1">
       <div class="overlay" onclick="togglePopup()">
         <div class="content">
-          <p id="btn-text">Guess the two word prompt which AI used to generate this image!.</p>
+          <p id="btn-text">Guess the two-word prompt which AI used to generate this image!</p>
           <p id="btn-text">Each guess will have each word ranked based on proximity in meaning within a list of 25,000 words.</p>
-          <p id="btn-text">And, you'll be told if any letters are in the right place.</p>
+          <p id="btn-text">And, you'll be told if you guess any letter that are also in the final word</p>
           <p id="btn-text">If you get stuck, you can press the hint button to be given a letter.</p>
+          <p id="btn-text">Have questions? backwords.help@gmail.com</p>
           <p id="btn-text">Press [Esc] to toggle these instructions.</p>
 
           <!--<div class="close-btn" onclick="togglePopup()">&times;</div> -->
@@ -58,7 +59,8 @@
           <p class="btn-text" id="final-4">2/3 Hints   🟨🟨🟨</p>
           <p class="btn-text">#Backwords</p>
           <textarea id="plswork">www</textarea>
-          <button id="share-button" onclick="copyFunction()">Share<i class="fa-light fa-share-nodes"></i></button>
+          <button id="share-button" onclick="copyFunction()">Copy<i class="fa-light fa-share-nodes"></i></button>
+          <a id="tweet-balls" href="#" onclick="f1(); return false;"><button id="share-button-tweet" onclick="copyFunction()">Tweet<i class="fa-light fa-share-nodes"></i></button></a>
           <div class="close-btn" onclick="toggleshare()"> &times;</div>
         </div>
     </div>
@@ -75,8 +77,8 @@
 
     <div class="d-flex justify-content-center"  id="second_box">
       <form action="" autocomplete="off" class="guess_form" id="user_form">
-        <input id="textbox" class="word_guess" type="text" placeholder="Risky"/>
-        <input class="word_guess" id = "textbox1" type="text" placeholder="Guess"/>
+        <input id="textbox" class="word_guess" type="text" placeholder="Enter"/>
+        <input class="word_guess" id = "textbox1" type="text" placeholder="Here"/>
       </form>
       </div>
 
@@ -117,7 +119,7 @@
   
     <footer>
       Made by Sam and Andrew <br>
-      <a href="https://buymeacoffee.com/backwords" style="color: black;">Support us here</a>
+      <a href="https://buymeacoffee.com/backwords" style="color: black;">Support us here</a><br>
       
       <div id="countdown" class="timer"></div>
       <div id="views"></div>
