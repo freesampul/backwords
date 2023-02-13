@@ -37,7 +37,7 @@ app.get('/', function(req,res, next){
       //__dirname : It will resolve to your project folder
     
     
-      res.render(__dirname + '/express/index.html' + { test });
+      res.render(__dirname + 'index.html' + { test });
   });
 // app.post('/submit', (req, res) => {
 //   let value

@@ -32,11 +32,12 @@ const [realFirstWord, realSecondWord] = realPhrase.split(" ");
 let correct1 = "Correct Letters: ";
 let correct2 = "Correct Letters: ";
 
-var distanceArray1 = generateDistances(getFirstWord(realPhrase));
-var distanceArray2 = generateDistances(getSecondWord(realPhrase));
+orderFile1 = readTextFile(`words/distances/${getFirstWord(realPhrase)}.txt`);
+orderFile2 = readTextFile(`words/distances/${getSecondWord(realPhrase)}.txt`);
 
-var orderArray1 = generateOrder(distanceArray1);
-var orderArray2 = generateOrder(distanceArray2);
+var orderArray1 = orderFile1.split("\n");
+
+var orderArray2 = orderFile2.split("\n");
 
 function generateOrder(distances) {
   return Object.keys(distances).sort((a, b) => distances[a] - distances[b]);

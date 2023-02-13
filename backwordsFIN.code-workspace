@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "backwordsFIN",
+			"path": "."
+		},
+		{
+			"name": "distances",
+			"path": "../../Downloads/distances"
+		}
+	],
+	"settings": {}
+}
