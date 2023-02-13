@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Backwords</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+   <link rel="stylesheet" href="style.css">
+   <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+   <script type = "text/javascript" src = "variable.js"></script>
+
+
+ </head>
+  <body>
+    <nav class="justify-content-center navbar bg-body-tertiary" style="border-bottom: 1px solid #6A6356;;  height: 55px; size: 10px;">
+      <div class="container-fluid">
+        <button id="instructions" onclick="togglePopup()">?</button>
+        <a class="navbar-brand">
+          <img class="logo_image" src="images/logio.png" alt="Backwords" width="70" height="50" class="d-inline-block align-text-top">
+        </a>
+      </div>
+    </nav>
+
+
+    
+
+    <div class="popup" id="popup-1">
+      <div class="overlay" onclick="togglePopup()">
+        <div class="content">
+          <p id="btn-text">Guess the two word prompt which AI used to generate this image!.</p>
+          <p id="btn-text">Each guess will have each word ranked based on proximity in meaning within a list of 25,000 words.</p>
+          <p id="btn-text">And, you'll be told if any letters are in the right place.</p>
+          <p id="btn-text">If you get stuck, you can press the hint button to be given a letter.</p>
+          <p id="btn-text">Press [Esc] to toggle these instructions.</p>
+
+          <!--<div class="close-btn" onclick="togglePopup()">&times;</div> -->
+        </div>
+    </div>
+    </div>
+
+
+
+
+    <div class="share" id="share-1">
+      <div class="overlay">
+        <div class="content">
+          <p id="btn-text">Congrats! You got it.</p>
+          <p id="final-1" class="btn-text">The phrase was: Placeholder Text</p>
+          <br>
+          <p id="btn-text">Stats:</p>
+          <p class="btn-text" id="final-2">Backwords: 001</p>
+          <p class="btn-text" id="final-3">01 Attempts 🟨🟨🟨🟨🟨</p>
+          <p class="btn-text" id="final-4">2/3 Hints   🟨🟨🟨</p>
+          <p class="btn-text">#Backwords</p>
+          <textarea id="plswork">www</textarea>
+          <button id="share-button" onclick="copyFunction()">Share<i class="fa-light fa-share-nodes"></i></button>
+          <div class="close-btn" onclick="toggleshare()"> &times;</div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <div class="d-flex justify-content-center" id="initial_box">
+      <div class="image-box">
+        <img id="test" src="placeholder.png" />
+      </div>
+  </div>
+
+
+    <div class="d-flex justify-content-center"  id="second_box">
+      <form action="" autocomplete="off" class="guess_form" id="user_form">
+        <input id="textbox" class="word_guess" type="text" placeholder="Risky"/>
+        <input class="word_guess" id = "textbox1" type="text" placeholder="Guess"/>
+      </form>
+      </div>
+
+      <div class="d-flex justify-content-center"  id="similarity_box">
+
+      <div class="progress-section">
+        <div id = "score1" class="score-text"></div>
+        <div id = "score2" class="score-text"></div>
+        
+          <div class="progress-bar">
+            <progress id="semantic_score1" max="100" value="0"></progress>
+          </div>
+          <div class="progress-bar">
+            <progress id="semantic_score2" max="100" value="0"></progress>
+            </div>
+            <div id = "hint1" class="score-text"></div>
+            <div id = "hint2" class="score-text"></div>
+            
+          
+        </div>
+      </div>
+
+
+
+
+
+      <div class="d-flex justify-content-center"  id="hint_flex">
+      <button id="hint_button">Hint!</button>
+      </div>
+      <div class="d-flex justify-content-center"  id="hint_flex">
+      <div id="score" class="hint-box"></div>
+    </div>
+
+  
+
+
+
+  
+    <footer>
+      Made by Sam and Andrew <br>
+      <a href="https://buymeacoffee.com/backwords" style="color: black;">Support us here</a>
+      
+      <div id="countdown" class="timer"></div>
+      <div id="views"></div>
+    </footer>
+  </body>
+</html>
+<script src="index.js"></script>
+
+<script>
+  // Set the date we're counting down to
+  var countDownDate = new Date();
+  countDownDate.setDate(countDownDate.getDate() + 1); // Set the countdown to the next day
+  countDownDate.setHours(0, 0, 0, 0); // Set the countdown to midnight
+
+  // Update the count down every 1 second
+  var x = setInterval(function () {
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the countdown date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Add a leading zero to the hours, minutes, and seconds if they are less than 10
+    if (hours < 10) {
+      hours = "0" + hours;
+    }
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+
+    // Display the result in the element with id="countdown"
+    document.getElementById("countdown").innerHTML =
+      "Time until next prompt: " + hours + ":" + minutes + ":" + seconds;
+
+    // If the countdown is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("countdown").innerHTML =
+        "Time until next prompt: EXPIRED";
+    }
+  }, 1000);
+</script>
