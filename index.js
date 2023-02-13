@@ -61,22 +61,22 @@ function generateOrder(distances) {
 //   return answer;
 // }
 
-function generateDistances(word) {
-  var localDict = {};
-  var sum = 0;
-  for (let k in wordVecs) {
-    sum = 0;
-    for (var j = 0; j < 300; j++) {
-      distance = wordVecs[word][j] - wordVecs[k][j];
+// function generateDistances(word) {
+//   var localDict = {};
+//   var sum = 0;
+//   for (let k in wordVecs) {
+//     sum = 0;
+//     for (var j = 0; j < 300; j++) {
+//       distance = wordVecs[word][j] - wordVecs[k][j];
 
-      sum += distance * distance;
-    }
+//       sum += distance * distance;
+//     }
 
-    localDict[k] = sum ** 0.5;
-  }
+//     localDict[k] = sum ** 0.5;
+//   }
 
-  return localDict;
-}
+//   return localDict;
+// }
 
 function daysBetween(date1, date2) {
   // Calculate the difference in milliseconds between the two dates
@@ -202,8 +202,6 @@ document.body.onkeyup = function(e) {
 
 let hamming_value1 = "";
 let hamming_Value2 = "";
-var real_array_1 = wordVecs[getFirstWord(realPhrase)];
-var real_array_2 = wordVecs[getSecondWord(realPhrase)];
 
 
 function test (wordOne, wordTwo) {
