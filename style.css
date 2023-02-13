@@ -23,7 +23,7 @@ h1 {
   width: 40px;
   height: 60px;
   position: absolute;
-  transform: translate(0%, -100%) scale(1);
+  transform: translate(0%, -90%) scale(5);
 }
 
 
@@ -360,4 +360,9 @@ footer {
 
 #plswork{
   transform: translate(-5000%, -5000%) scale(0);
+}
+
+#title{
+  transform: translate(0%, -150%) scale(1);
+  color: whitesmoke;
 }
