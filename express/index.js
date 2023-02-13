@@ -436,7 +436,6 @@ function copyFunction(){
   let yellow_number = 0
   yellow_number = (long_johnson/(counter+1))*5 +1
   yellow_number = Math.floor(yellow_number)
-  let done = false
   for(let i = 1; i < 6; i++)
   {
     if (i==5)
