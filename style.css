@@ -19,14 +19,28 @@ h1 {
 }
 .navbar-brand {float:none;}
 
+
+@media (max-width: 499px) {
 .logo_image{
-  width: 100px;
-  height: 60px;
+  width: 80px;
+  height: 20px;
   position: absolute;
-  transform: translate(-55%, -90%) scale(5);
+  transform: translate(-30%, -600%) scale(5);
+}
 }
 
+@media (min-width: 500px) {
+  .logo_image{
+    width: 100px;
+    height: 60px;
+    position: absolute;
+    transform: translate(-55%, -90%) scale(5);
+  }
+  }
+  
 
+
+  @media (max-width: 499px) {
 #instructions{
   width: 20px;
   height: 20px;
@@ -34,7 +48,20 @@ h1 {
   border: #6A6356 solid;
   border-radius: 50%;
   margin-left: 95%;
+  transform: translate(0%, -450%);
 }
+  }
+  @media (min-width: 499px) {
+    #instructions{
+      width: 20px;
+      height: 20px;
+      background-color: #2e2929;
+      border: #6A6356 solid;
+      border-radius: 50%;
+      margin-left: 95%;
+    }
+      }
+    
 
 .popup .overlay {
   position: fixed;
@@ -47,6 +74,25 @@ h1 {
   display: none;
 }
 
+@media (max-width: 499px) {
+  .popup .content {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: #2e2929;
+    border:#6c757d;
+    width: 350px;
+    height: 200spx;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+}
+
+@media (min-width: 500px) {
 .popup .content {
   position: absolute;
   top:50%;
@@ -60,6 +106,7 @@ h1 {
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
+}
 }
 
 
@@ -178,23 +225,47 @@ progress {
 }
 
 
-
+@media (max-width: 499px) {
 #similarity_box{
-  margin-top: 1vh;
+  margin-top: -19%;
   height: 80px;
   justify-content: center;
   ;
-
+}
 }
 
+@media (min-width: 499px) {
+  #similarity_box{
+    margin-top: 1vh;
+    height: 80px;
+    justify-content: center;
+    ;
+  }
+  }
 
+@media (max-width: 499px) {
 .progress-section {
+  margin-top: -40%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   margin: 1em;
-  width: 50%;
+  width: 200px;
 }
+
+}
+@media (min-width: 500px) {
+  .progress-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    margin: 1em;
+    width: 50%;
+  }
+  
+  }
+
+
 .progress-bar {
   width: 100%;
   height: 20px;
@@ -210,17 +281,17 @@ progress {
   color: whitesmoke;
 }
 
-footer {
-  font-size: 9px;
-  position: fixed;
-  bottom: 0px;
-  margin-right: auto;
-  margin-left: auto;
-  border: 2px solid #597c47;
-  padding: 0 40px;
-  background-color: #6c757d;
-}
 
+  footer {
+    font-size: 9px;
+    position: fixed;
+    bottom: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 2px solid #6A6356;;
+    padding: 0 40px;
+    background-color: #6c757d;
+  }
 
 
 #second_box{
@@ -251,6 +322,25 @@ footer {
     align-items: center;
     }
 
+    @media (max-width: 499px) {
+    .hint-box {
+      margin-bottom: 40px;
+      margin-top: -20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70%;
+      font-size: 20px;
+      text-align: center;
+      height: 80px;
+      letter-spacing: 0.1em;
+      background-color: lightgrey;
+      border: 5px solid #6A6356;
+      align-self: center;
+    }
+  }
+
+  @media (min-width: 500px) {
     .hint-box {
       display: flex;
       align-items: center;
@@ -264,9 +354,11 @@ footer {
       border: 5px solid #6A6356;
       align-self: center;
     }
+  }
 
+  @media (max-width: 499px) {
     button {
-      margin-top: 2vh;
+      margin-top: 30%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -280,7 +372,24 @@ footer {
       background-color: #575656;
       align-self: center;
     }
-
+  }
+    @media (min-width: 501px) {
+      button {
+        margin-top: 2vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: darkgrey;
+        font-size: 20px;
+        max-width: 100%;
+        max-height: 10%;
+        height: auto;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        background-color: #575656;
+        align-self: center;
+      }
+    }
 
 
 
