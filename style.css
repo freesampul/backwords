@@ -457,10 +457,19 @@ progress {
   margin-left: 30%;
 }
 
+
+@media (max-width: 499px) {
+  #share-button-tweet{
+    margin-left: 50%;
+    transform: translate(30%, -482%) scale(1);
+  }
+}
+
+@media (min-width: 500px) {
 #share-button-tweet{
   margin-left: 50%;
   transform: translate(30%, -140%) scale(1);
-
+}
 }
 
 #tweet-balls{
