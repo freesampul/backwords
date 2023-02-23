@@ -325,7 +325,8 @@ progress {
 
     @media (max-width: 499px) {
       #sub_flex{
-        margin-top: 10px;
+        margin-top: -120px;
+        margin-bottom: 80px;
         height: 10%;
         overflow-y: hidden;
         align-items: center;
