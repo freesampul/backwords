@@ -187,6 +187,14 @@ document.addEventListener("keydown", function (event) {
   }
 })
 
+submit_button = document.getElementById("submit_button")
+
+submit_button.addEventListener("click", function () {
+    const wordOne = ((document.getElementById("textbox").value).trim()).toLowerCase();
+    const wordTwo = ((document.getElementById("textbox1").value).trim()).toLowerCase();
+    document.querySelector("form").submit;
+    test(wordOne, wordTwo);
+});
 
 
 document.body.onkeyup = function(e) {

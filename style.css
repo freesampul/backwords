@@ -322,6 +322,27 @@ progress {
     align-items: center;
     }
 
+
+    @media (max-width: 499px) {
+      #sub_flex{
+        margin-top: 10px;
+        height: 10%;
+        overflow-y: hidden;
+        align-items: center;
+        }
+    }
+
+
+    @media (min-width: 499px) {
+      #sub_flex{
+        margin-top: 10px;
+        height: 10%;
+        overflow-y: hidden;
+        align-items: center;
+        }
+      }
+
+
     @media (max-width: 499px) {
     .hint-box {
       margin-bottom: 40px;
