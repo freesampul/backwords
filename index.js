@@ -245,7 +245,7 @@ else if (number2 == 0){
 else
 {
   document.getElementById("score2").innerHTML =
-  wordTwo + " is not in our word listlist.";
+  wordTwo + " is not in our word list.";
 }
 
 
