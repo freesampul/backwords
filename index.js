@@ -416,36 +416,46 @@ function toggleshare() {
   document.getElementById("final-1").innerHTML=("The real phrase was: " + realPhrase)
   document.getElementById("final-2").innerHTML=("Backwords 0" + dayN)
   let attemptEmojis = ""
-  // let yellow_number = 0
-  // yellow_number = (long_johnson/(counter+1))*5 +1
-  // yellow_number = Math.floor(yellow_number)
+  let yellow_number = 0
+  yellow_number = (long_johnson/(counter+1))*5 +1
+  yellow_number = Math.floor(yellow_number)
 
-  // let done = false
-  // for(let i = 1; i < 6; i++)
-  // {
-  //   if (i==5)
-  //   {
-  //     attemptEmojis += "🟩"
-  //     done = true
-  //   }
-  //  else if (i >= yellow_number )
-  //  {
-  //   attemptEmojis += "🟨"
-  //  }
-  //  else
-  //  {
-  //   attemptEmojis +=("⬛")
-  //  }
-  // }
-for (var i = 0; i < attemptLog.length; i++)
-{
-  if (i%2 == 0)
-    attemptEmojis += "Attempt" + (i/2 + 1) + attemptLog.charAt(i)
-  else
-  attemptEmojis += attemptLog.charAt(i) + "\n"
-}
-
-  document.getElementById("final-3").innerHTML=((counter +1 )+ " Attempts " + attemptEmojis)
+  let done = false
+  for(let i = 1; i < 6; i++)
+  {
+    if (i==5)
+    {
+      attemptEmojis += "🟩"
+      done = true
+    }
+   else if (i >= yellow_number )
+   {
+    attemptEmojis += "🟨"
+   }
+   else
+   {
+    attemptEmojis +=("⬛")
+   }
+  }
+   document.getElementById("final-3").innerHTML=((counter + 1) + "attempts" + attemptEmojis)
+// for (var i = 0; i < attemptLog.length; i++)
+// {
+//   console.log(attemptLog)
+//   if (i%2 == 0)
+//     attemptEmojis += attemptLog.charAt(i)
+//   else
+//   attemptEmojis += attemptLog.charAt(i) + "\n"
+// }
+// var bingus = attemptLog.length/2 - 6
+//   document.getElementById("final-3").innerHTML=((bingus + 6) + "attempts")
+//   if (bingus >=  0){
+//     document.getElementById("final-3a").innerHTML=(attemptLog.substring(bingus*2, bingus*2 + 2))
+//     document.getElementById("final-3b").innerHTML=(attemptLog.substring(bingus*2+2, bingus*2 + 4))
+//     document.getElementById("final-3c").innerHTML=(attemptLog.substring(bingus*2+4, bingus*2 + 6))
+//     document.getElementById("final-3d").innerHTML=(attemptLog.substring(bingus*2+6, bingus*2 + 8))
+//     document.getElementById("final-3e").innerHTML=(attemptLog.substring(bingus*2+8, bingus*2 + 10))
+//     document.getElementById("final-3f").innerHTML=(attemptLog.substring(bingus*2+10, bingus*2 + 12))
+//   }
   
  // let winText = ((counter +1 )+ " Attempts" + attemptEmojis);
 
