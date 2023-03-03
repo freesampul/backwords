@@ -1,4 +1,5 @@
 var text = "";
+var attemptLog = "";
 var currentDate = new Date();
 var januaryFirst = new Date(2023, 1, 12);
 const dayNumber = document.getElementById("dayNumber");
@@ -239,7 +240,7 @@ let hamming_Value2 = "";
 function test (wordOne, wordTwo) {
 //document.querySelector("form").addEventListener("submit", function (event) {
   event.preventDefault();
-
+ // 🟩 🟨 ⬛
 
 
   number1 = orderArray1.indexOf(wordOne);
@@ -248,6 +249,7 @@ function test (wordOne, wordTwo) {
 if(number1 != 0 && number1 != -1) {
   document.getElementById("score1").innerHTML =
     wordOne + " is the " + number1 + "th closest in meaning!";
+    
 } else if (number1 == 0){
   document.getElementById("score1").innerHTML =
     wordOne + "  is correct!";
@@ -275,48 +277,54 @@ else
 
 if(number1 > 1000 || number1 == -1){
   document.getElementById("semantic_score1").value = 0;
+  attemptLog.add("⬛")
 } else if (number1 < 500 && number1 > 100) {
   document.getElementById("semantic_score1").value = 25- (100 * (number1 / 25000));
+  attemptLog.add("⬛")
 } else if (number1 < 100  && number1 > 50) {
   document.getElementById("semantic_score1").value = 50- (100 * (number1 / 25000));
+  attemptLog.add("🟨")
   if (long_johnson == 0)
   {
     long_johnson = counter+1;
   }
 } else if (number1 < 50 && number1 > 1) {
   document.getElementById("semantic_score1").value = 100- (100 * (number1 / 25000)) - 1;
+  attemptLog.add("🟨")
   if (long_johnson == 0)
   {
     long_johnson = counter+1;
   }
 } else if (number1 == 0){
 document.getElementById("semantic_score1").value = 100;
-} else if (number1 == -1){
-  document.getElementById("semantic_score1").value = 0;
+attemptLog.add("🟩")
 }
 
 
 
 if(number2 > 1000 || number2 == -1){
   document.getElementById("semantic_score2").value = 0;
+  attemptLog.add("⬛")
 } else if (number2 < 500 && number2 > 100) {
   document.getElementById("semantic_score2").value = 25- (100 * (number2 / 25000));
+  attemptLog.add("⬛")
 } else if (number2 < 100  && number2 > 50) {
   document.getElementById("semantic_score2").value = 50- (100 * (number2 / 25000));
+  attemptLog.add("🟨")
   if (long_johnson < 0)
   {
     long_johnson = counter;
   }
 } else if (number2 < 50 && number2 > 1) {
   document.getElementById("semantic_score2").value = 100- (100 * (number2 / 25000)) - 1;
+  attemptLog.add("🟨")
   if (long_johnson < 0)
   {
     long_johnson = counter;
   }
 } else if (number2 == 0){
+  attemptLog.add("🟩")
   document.getElementById("semantic_score2").value = 100;
-  } else if (number2 == -1){
-    document.getElementById("semantic_score2").value = 0;
   }
 
 
@@ -408,28 +416,34 @@ function toggleshare() {
   document.getElementById("final-1").innerHTML=("The real phrase was: " + realPhrase)
   document.getElementById("final-2").innerHTML=("Backwords 0" + dayN)
   let attemptEmojis = ""
-  let yellow_number = 0
-  yellow_number = (long_johnson/(counter+1))*5 +1
-  yellow_number = Math.floor(yellow_number)
+  // let yellow_number = 0
+  // yellow_number = (long_johnson/(counter+1))*5 +1
+  // yellow_number = Math.floor(yellow_number)
 
-  let done = false
-  for(let i = 1; i < 6; i++)
-  {
-    if (i==5)
-    {
-      attemptEmojis += "🟩"
-      done = true
-    }
-   else if (i >= yellow_number )
-   {
-    attemptEmojis += "🟨"
-   }
-   else
-   {
-    attemptEmojis +=("⬛")
-   }
-  }
-
+  // let done = false
+  // for(let i = 1; i < 6; i++)
+  // {
+  //   if (i==5)
+  //   {
+  //     attemptEmojis += "🟩"
+  //     done = true
+  //   }
+  //  else if (i >= yellow_number )
+  //  {
+  //   attemptEmojis += "🟨"
+  //  }
+  //  else
+  //  {
+  //   attemptEmojis +=("⬛")
+  //  }
+  // }
+for (var i = 0; i < attemptLog.length; i++)
+{
+  if (i%2 == 0)
+    attemptEmojis += "Attempt" + (i/2 + 1) + attemptLog.charAt(i)
+  else
+  attemptEmojis += attemptLog.charAt(i) + "\n"
+}
 
   document.getElementById("final-3").innerHTML=((counter +1 )+ " Attempts " + attemptEmojis)
   
