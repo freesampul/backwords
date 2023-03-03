@@ -39,21 +39,21 @@ var orderArray1 = orderFile1.split("\n");
 
 var orderArray2 = orderFile2.split("\n");
 
-var streakCookie = getCookie("streak");
+//var streakCookie = getCookie("streak");
 if(streakCookie == null){
   document.cookie = "streak=0";
 };
 
 
-var solved = getCookie("hasGotten");
+//var solved = getCookie("hasGotten");
 
 if(solved == true)
 {
-  counter = getCookie("guesses");
+  //counter = getCookie("guesses");
   toggleshare;
 }
 
-var dayCookie = getCookie("currentDay");
+//var dayCookie = getCookie("currentDay");
 
 if(dayCookie == null || dayCookie !=dayN){
   document.cookie("guesses=0")
@@ -324,7 +324,7 @@ if(number2 > 1000 || number2 == -1){
   {
      toggleshare();
      docuement.cookies("hasGotten=true")
-     streakN = docuement.getCookie("streak")
+     //streakN = docuement.getCookie("streak")
      streakN++
     docuement.cookie(`streak=${streakN}`)
   }
