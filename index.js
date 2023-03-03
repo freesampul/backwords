@@ -277,53 +277,53 @@ else
 
 if(number1 > 1000 || number1 == -1){
   document.getElementById("semantic_score1").value = 0;
-  attemptLog.add("⬛")
+  attemptLog += "⬛"
 } else if (number1 < 500 && number1 > 100) {
   document.getElementById("semantic_score1").value = 25- (100 * (number1 / 25000));
-  attemptLog.add("⬛")
+  attemptLog += "⬛"
 } else if (number1 < 100  && number1 > 50) {
   document.getElementById("semantic_score1").value = 50- (100 * (number1 / 25000));
-  attemptLog.add("🟨")
+  attemptLog += "🟨"
   if (long_johnson == 0)
   {
     long_johnson = counter+1;
   }
 } else if (number1 < 50 && number1 > 1) {
   document.getElementById("semantic_score1").value = 100- (100 * (number1 / 25000)) - 1;
-  attemptLog.add("🟨")
+  attemptLog += "🟨"
   if (long_johnson == 0)
   {
     long_johnson = counter+1;
   }
 } else if (number1 == 0){
 document.getElementById("semantic_score1").value = 100;
-attemptLog.add("🟩")
+attemptLog += "🟩"
 }
 
 
 
 if(number2 > 1000 || number2 == -1){
   document.getElementById("semantic_score2").value = 0;
-  attemptLog.add("⬛")
+  attemptLog += "⬛"
 } else if (number2 < 500 && number2 > 100) {
   document.getElementById("semantic_score2").value = 25- (100 * (number2 / 25000));
-  attemptLog.add("⬛")
+  attemptLog += "⬛"
 } else if (number2 < 100  && number2 > 50) {
   document.getElementById("semantic_score2").value = 50- (100 * (number2 / 25000));
-  attemptLog.add("🟨")
+  attemptLog += "🟨"
   if (long_johnson < 0)
   {
     long_johnson = counter;
   }
 } else if (number2 < 50 && number2 > 1) {
   document.getElementById("semantic_score2").value = 100- (100 * (number2 / 25000)) - 1;
-  attemptLog.add("🟨")
+  attemptLog += "🟨"
   if (long_johnson < 0)
   {
     long_johnson = counter;
   }
 } else if (number2 == 0){
-  attemptLog.add("🟩")
+  attemptLog  += "🟩"
   document.getElementById("semantic_score2").value = 100;
   }
 
