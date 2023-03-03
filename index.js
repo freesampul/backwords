@@ -56,6 +56,7 @@ if(localStorage.getItem('currentDay' == null || 'currentDay' !=dayN)){
   localStorage.setItem('guesses', 0)
   localStorage.setItem('hasGotten', false);
   localStorage.setItem('currentDay', dayN)
+  console.log("it works?")
 }
 
 
