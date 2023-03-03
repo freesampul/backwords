@@ -39,10 +39,10 @@ var orderArray1 = orderFile1.split("\n");
 
 var orderArray2 = orderFile2.split("\n");
 
-//var streakCookie = getCookie("streak");
-if(streakCookie == null){
-  document.cookie = "streak=0";
-};
+// //var streakCookie = getCookie("streak");
+// //if(streakCookie == null){
+//   document.cookie = "streak=0";
+// }; f
 
 
 //var solved = getCookie("hasGotten");
@@ -55,12 +55,12 @@ if(solved == true)
 
 //var dayCookie = getCookie("currentDay");
 
-if(dayCookie == null || dayCookie !=dayN){
-  document.cookie("guesses=0")
-  document.cookie("hasGotten=false")
-  docuement.cookie(`currentDay=${dayN}`)
-  console.log("it works?")
-}
+// if(dayCookie == null || dayCookie !=dayN){
+//   document.cookie("guesses=0")
+//   document.cookie("hasGotten=false")
+//   docuement.cookie(`currentDay=${dayN}`)
+//   console.log("it works?")
+// }
 
 
 function generateOrder(distances) {
@@ -323,10 +323,10 @@ if(number2 > 1000 || number2 == -1){
   if (number1 == 0 && number2 == 0)
   {
      toggleshare();
-     docuement.cookies("hasGotten=true")
+     //docuement.cookies("hasGotten=true")
      //streakN = docuement.getCookie("streak")
-     streakN++
-    docuement.cookie(`streak=${streakN}`)
+    // streakN++
+    //docuement.cookie(`streak=${streakN}`)
   }
   verbal_hint1 = generateVerbalHint(
     wordOne,
