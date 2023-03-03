@@ -39,7 +39,7 @@ var orderArray1 = orderFile1.split("\n");
 
 var orderArray2 = orderFile2.split("\n");
 
-
+document.cookie = "streak=0";
 if(localStorage.getItem('streak' == null)){
 localStorage.setItem('streak', 0)
 };
