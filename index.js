@@ -47,11 +47,11 @@ var orderArray2 = orderFile2.split("\n");
 
 //var solved = getCookie("hasGotten");
 
-if(solved == true)
-{
-  //counter = getCookie("guesses");
-  toggleshare;
-}
+// if(solved == true)
+// {
+//   //counter = getCookie("guesses");
+//   toggleshare;
+// }
 
 //var dayCookie = getCookie("currentDay");
 
