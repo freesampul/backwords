@@ -39,6 +39,26 @@ var orderArray1 = orderFile1.split("\n");
 
 var orderArray2 = orderFile2.split("\n");
 
+
+if(localStorage.getItem('streak' == null)){
+localStorage.setItem('streak', 0)
+};
+
+if(localStorage.getItem('hasGotten' == true))
+{
+  counter = locaclStorage.getItem('guesses')
+  toggleshare;
+
+}
+
+
+if(localStorage.getItem('currentDay' == null || 'currentDay' !=dayN)){
+  localStorage.setItem('guesses', 0)
+  localStorage.setItem('hasGotten', false);
+  localStorage.setItem('currentDay', dayN)
+}
+
+
 function generateOrder(distances) {
   return Object.keys(distances).sort((a, b) => distances[a] - distances[b]);
 }
@@ -299,6 +319,10 @@ if(number2 > 1000 || number2 == -1){
   if (number1 == 0 && number2 == 0)
   {
      toggleshare();
+     localStorage.setItem('hasGotten', true);
+     streakN = localStorage.getItem('streak');
+     streakN++
+     localStorage.setItem('streak', streakN)
   }
   verbal_hint1 = generateVerbalHint(
     wordOne,
@@ -316,6 +340,7 @@ if(number2 > 1000 || number2 == -1){
   score = document.getElementById("score");
    getScore(wordOne + wordTwo, realPhrase, counter);
   counter++;
+  localStorage.setItem('guesses', counter)
 };
 
 
