@@ -7,7 +7,6 @@ sharing = document.getElementById("score");
 var daysUntilJanuaryFirst = daysBetween(currentDate, januaryFirst);
 var dayN = daysUntilJanuaryFirst * -1;
 text = readTextFile("words/phrases.txt");
-document.getElementById("popup-1").classList.toggle("active")
 document.getElementById("share-1").classList.toggle("unactive")
 var lines = text.split("\n");
 realPhrase = lines[dayN - 1];
@@ -40,29 +39,54 @@ var orderArray1 = orderFile1.split("\n");
 
 var orderArray2 = orderFile2.split("\n");
 
-// //var streakCookie = getCookie("streak");
-// //if(streakCookie == null){
-//   document.cookie = "streak=0";
-// }; f
 
 
-//var solved = getCookie("hasGotten");
+if(getCookie("streak") == null){
+  document.cookie = "streak=0;";
+};
 
-// if(solved == true)
-// {
-//   //counter = getCookie("guesses");
-//   toggleshare;
-// }
+if(getCookie("hasGotten") == false || getCookie("hasGotten") == null){
+document.cookie = "guesses=0;";
+document.cookie = "hasGotten=false;"
+}
 
-//var dayCookie = getCookie("currentDay");
 
-// if(dayCookie == null || dayCookie !=dayN){
-//   document.cookie("guesses=0")
-//   document.cookie("hasGotten=false")
-//   docuement.cookie(`currentDay=${dayN}`)
-//   console.log("it works?")
-// }
+function getCookie(name){
+  const cDecoded = decodeURIComponent(document.cookie);
+  const cArray = cDecoded.split("; ")
+  let result = null;
+  
+  cArray.forEach(element => {
+    if(element.indexOf(name) == 0){
+      result = element.substring(name.length+1)
+    }
+  })
+  return result;
+}
 
+
+
+
+if(getCookie("hasGotten") == "true"){
+counter = parseInt(getCookie("guesses")) -1;
+toggleshare();
+} else {
+  document.getElementById("popup-1").classList.toggle("active")
+}
+
+
+ if(getCookie("currentDay") == null || getCookie("currentDay") == (dayN -1 )){
+    document.cookie = "guesses=0;";
+   document.cookie = "hasGotten=false;";
+   document.cookie = `currentDay=${dayN};`;
+   }
+
+   if(getCookie("currentDay") == null || getCookie("currentDay") <= (dayN -2 )){
+    document.cookie = "guesses=0;";
+   document.cookie = "hasGotten=false;";
+   document.cookie = `currentDay=${dayN};`;
+   document.cookie = 'streak=0;';
+   }
 
 function generateOrder(distances) {
   return Object.keys(distances).sort((a, b) => distances[a] - distances[b]);
@@ -330,11 +354,14 @@ if(number2 > 1000 || number2 == -1){
 
   if (number1 == 0 && number2 == 0)
   {
+    if(getCookie("hasGotten") != "true" || getCookie("hasGotten") == null){
+    streakN = parseInt(getCookie("streak"));
+    streakN++
+    console.log(streakN)
+    console.log("balls")
+    document.cookie = `streak=${streakN};`;
+    }
      toggleshare();
-     //docuement.cookies("hasGotten=true")
-     //streakN = docuement.getCookie("streak")
-    // streakN++
-    //docuement.cookie(`streak=${streakN}`)
   }
   verbal_hint1 = generateVerbalHint(
     wordOne,
@@ -352,7 +379,8 @@ if(number2 > 1000 || number2 == -1){
   score = document.getElementById("score");
    getScore(wordOne + wordTwo, realPhrase, counter);
   counter++;
-  localStorage.setItem('guesses', counter)
+
+  document.cookie = `guesses=${counter};`;
 };
 
 
@@ -412,6 +440,7 @@ function togglePopup() {
 }
 
 function toggleshare() {
+  document.cookie = 'hasGotten=true;';
   document.getElementById("share-1").classList.toggle("active");
   document.getElementById("final-1").innerHTML=("The real phrase was: " + realPhrase)
   document.getElementById("final-2").innerHTML=("Backwords 0" + dayN)
@@ -471,6 +500,37 @@ function toggleshare() {
 {
   document.getElementById("final-4").innerHTML=("3/3 Hints ⬛⬛⬛ ")
 }
+let streakTxt = ""
+if(getCookie("streak") == "1"){
+  streakTxt = "1 Day Streak 🤢"
+} else if (getCookie("streak") == "2"){
+  streakTxt = "2 Day Streak 🤢🐢"
+} else if (getCookie("streak") == "3"){
+  streakTxt = "3 Day Streak 🤢🐢🍏"
+}else if (getCookie("streak") == "4"){
+  streakTxt = "4 Day Streak 🤢🐢🍏📗"
+}else if (getCookie("streak") == "5"){
+  streakTxt = "5 Day Streak 🤢🐢🍏📗✅"
+}else if (getCookie("streak") == "6"){
+  streakTxt = "6 Day Streak ⭐🐢🍏📗✅"
+}else if (getCookie("streak") == "7"){
+  streakTxt = "7 Day Streak ⭐⭐🍏📗✅"
+}else if (getCookie("streak") == "8"){
+  streakTxt = "8 Day Streak ⭐⭐🌟📗✅"
+}else if (getCookie("streak") == "9"){
+  streakTxt = "9 Day Streak ⭐⭐🌟🌟✅"
+}else if (getCookie("streak") == "10"){
+  streakTxt = "10 Day Streak ⭐⭐🌟🌟💫"
+}else if (getCookie("streak") == "100"){
+  streakTxt = "100 Day Streak 💯💯💯💯💯"
+} else if (parseInt(getCookie("streak")) > 10 && (parseInt(getCookie("streak"))!= 100)){
+  streakTxt = `${getCookie("streak")} Day Streak ⭐⭐🌟🌟💫 `
+}
+
+document.getElementById("final-5").innerHTML=(streakTxt);
+
+
+
   copyFunction();
   
 }
@@ -490,6 +550,33 @@ function copyFunction(){
  else
 {
   hintTxt = "3/3 Hints        ⬛⬛⬛ "
+}
+
+let streakTxt = ""
+if(getCookie("streak") == "1"){
+  streakTxt = "1 Day Streak 🤢"
+} else if (getCookie("streak") == "2"){
+  streakTxt = "2 Day Streak 🤢🐢"
+} else if (getCookie("streak") == "3"){
+  streakTxt = "3 Day Streak 🤢🐢🍏"
+}else if (getCookie("streak") == "4"){
+  streakTxt = "4 Day Streak 🤢🐢🍏📗"
+}else if (getCookie("streak") == "5"){
+  streakTxt = "5 Day Streak 🤢🐢🍏📗✅"
+}else if (getCookie("streak") == "6"){
+  streakTxt = "6 Day Streak ⭐🐢🍏📗✅"
+}else if (getCookie("streak") == "7"){
+  streakTxt = "7 Day Streak ⭐⭐🍏📗✅"
+}else if (getCookie("streak") == "8"){
+  streakTxt = "8 Day Streak ⭐⭐🌟📗✅"
+}else if (getCookie("streak") == "9"){
+  streakTxt = "9 Day Streak ⭐⭐🌟🌟✅"
+}else if (getCookie("streak") == "10"){
+  streakTxt = "10 Day Streak ⭐⭐🌟🌟💫"
+}else if (getCookie("streak") == "100"){
+  streakTxt = "100 Day Streak 💯💯💯💯💯"
+} else if (parseInt(getCookie("streak")) > 10 && (parseInt(getCookie("streak"))!= 100)){
+  streakTxt = `${getCookie("streak")} Day Streak ⭐⭐🌟🌟💫 `
 }
 
   let attemptEmojis = ""
@@ -522,7 +609,7 @@ function copyFunction(){
      `Backwords 0${dayN}
 ${counter} Attempts ${attemptEmojis}
 ${hintTxt}
-#backwords
+${streakTxt}
 backwords.xyz` 
 document.getElementById("plswork").value = copyString;
   inputElement.value = copyString;
@@ -537,6 +624,7 @@ document.getElementById("plswork").value = copyString;
  `Backwords 0${dayN}%0A
 ${counter} Attempts ${attemptEmojis}%0A
 ${hintTxt}%0A
+${streakTxt}%0A
 backwords.xyz%0A`
   const link = `https://twitter.com/intent/tweet?text=${twitterString}&hashtags=backwords`; 
   document.getElementById("tweet-balls").href=link;
