@@ -437,7 +437,7 @@ function toggleshare() {
     attemptEmojis +=("⬛")
    }
   }
-   document.getElementById("final-3").innerHTML=((counter + 1) + "attempts" + attemptEmojis)
+   document.getElementById("final-3").innerHTML=((counter + 1) + " " + "attempts" + " " + attemptEmojis)
 // for (var i = 0; i < attemptLog.length; i++)
 // {
 //   console.log(attemptLog)
