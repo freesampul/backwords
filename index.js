@@ -66,6 +66,21 @@ function getCookie(name){
 
 
 
+if(getCookie("currentDay") == null || getCookie("currentDay") == (dayN -1 )){
+  document.cookie = "guesses=0;";
+ document.cookie = "hasGotten=false;";
+ document.cookie = `currentDay=${dayN};`;
+ }
+
+ if(getCookie("currentDay") == null || getCookie("currentDay") <= (dayN -2 )){
+  document.cookie = "guesses=0;";
+ document.cookie = "hasGotten=false;";
+ document.cookie = `currentDay=${dayN};`;
+ document.cookie = 'streak=0;';
+ }
+
+
+
 
 if(getCookie("hasGotten") == "true"){
 counter = parseInt(getCookie("guesses")) -1;
@@ -73,20 +88,6 @@ toggleshare();
 } else {
   document.getElementById("popup-1").classList.toggle("active")
 }
-
-
- if(getCookie("currentDay") == null || getCookie("currentDay") == (dayN -1 )){
-    document.cookie = "guesses=0;";
-   document.cookie = "hasGotten=false;";
-   document.cookie = `currentDay=${dayN};`;
-   }
-
-   if(getCookie("currentDay") == null || getCookie("currentDay") <= (dayN -2 )){
-    document.cookie = "guesses=0;";
-   document.cookie = "hasGotten=false;";
-   document.cookie = `currentDay=${dayN};`;
-   document.cookie = 'streak=0;';
-   }
 
 function generateOrder(distances) {
   return Object.keys(distances).sort((a, b) => distances[a] - distances[b]);
