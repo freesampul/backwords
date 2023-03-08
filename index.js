@@ -41,11 +41,22 @@ var orderArray2 = orderFile2.split("\n");
 
 
 
-if(getCookie("streak") == null){
+if(localStorage.getItem('streak') == null){
+  localStorage.setItem("streak", '0');
+}
+
+
+if(localStorage.getItem("streak") == null){
   document.cookie = "streak=0;";
 };
 
-if(getCookie("hasGotten") == false || getCookie("hasGotten") == null){
+if(localStorage.getItem('hasGotten') == null || localStorage.getItem('hasGotten') == null){
+localStorage.setItem('guesses', '0');
+localStorage.setItem('hasGotten','false');
+}
+
+
+if(localStorage.getItem("hasGotten") == false || localStorage.getItem("hasGotten") == null){
 document.cookie = "guesses=0;";
 document.cookie = "hasGotten=false;"
 }
@@ -65,14 +76,26 @@ function getCookie(name){
 }
 
 
+if(localStorage.getItem('currentDay') == null || localStorage.getItem('currentDay') == (dayN -1)){
+  localStorage.setItem("guesses", '0');
+  localStorage.setItem('hasGotten', 'false');
+  localStorage.setItem('currentDay', `${dayN}`);
+}
 
-if(getCookie("currentDay") == null || getCookie("currentDay") == (dayN -1 )){
+if(localStorage.getItem("currentDay") == null || localStorage.getItem("currentDay") == (dayN -1 )){
   document.cookie = "guesses=0;";
  document.cookie = "hasGotten=false;";
  document.cookie = `currentDay=${dayN};`;
  }
 
- if(getCookie("currentDay") == null || getCookie("currentDay") <= (dayN -2 )){
+ if(localStorage.getItem('currentDay') == null || localStorage.getItem("currentDay") <= (dayN -2)){
+  localStorage.setItem("guesses", '0');
+  localStorage.setItem('hasGotten', 'false');
+  localStorage.setItem('currentDay', `${dayN}`);
+  localStorage.setItem('streak', '0');
+ }
+
+ if(localStorage.getItem("currentDay") == null || localStorage.getItem("currentDay") <= (dayN -2 )){
   document.cookie = "guesses=0;";
  document.cookie = "hasGotten=false;";
  document.cookie = `currentDay=${dayN};`;
@@ -80,10 +103,15 @@ if(getCookie("currentDay") == null || getCookie("currentDay") == (dayN -1 )){
  }
 
 
+if(localStorage.getItem('hasGotten') == ("true")){
+  counter = parseInt(localStorage.getItem('guessses')) -1;
+  toggleshare();
+} else {
+   document.getElementById("popup-1").classList.toggle("active")
+}
 
-
-if(getCookie("hasGotten") == "true"){
-counter = parseInt(getCookie("guesses")) -1;
+if(localStorage.getItem("hasGotten") == "true"){
+counter = parseInt(localStorage.getItem("guesses")) -1;
 toggleshare();
 } else {
   document.getElementById("popup-1").classList.toggle("active")
@@ -355,13 +383,12 @@ if(number2 > 1000 || number2 == -1){
 
   if (number1 == 0 && number2 == 0)
   {
-    if(getCookie("hasGotten") != "true" || getCookie("hasGotten") == null){
-    streakN = parseInt(getCookie("streak"));
+    if(localStorage.getItem('hasGotten') != 'true' || localStorage.getItem('hasGotten') == null){
+      streakN = parseInt(localStorage.getItem("streak"));
     streakN++
-    console.log(streakN)
-    console.log("balls")
-    document.cookie = `streak=${streakN};`;
+    localStorage.setItem= (`streak`,`${streakN}`);
     }
+
      toggleshare();
   }
   verbal_hint1 = generateVerbalHint(
@@ -382,6 +409,7 @@ if(number2 > 1000 || number2 == -1){
   counter++;
 
   document.cookie = `guesses=${counter};`;
+  localStorage.setItem('guesses', `${counter}`);
 };
 
 
@@ -441,6 +469,7 @@ function togglePopup() {
 }
 
 function toggleshare() {
+  localStorage.setItem('hasGotten', 'true');
   document.cookie = 'hasGotten=true;';
   document.getElementById("share-1").classList.toggle("active");
   document.getElementById("final-1").innerHTML=("The real phrase was: " + realPhrase)
@@ -502,30 +531,30 @@ function toggleshare() {
   document.getElementById("final-4").innerHTML=("3/3 Hints ⬛⬛⬛ ")
 }
 let streakTxt = ""
-if(getCookie("streak") == "1"){
+if(localStorage.getItem("streak") == "1"){
   streakTxt = "1 Day Streak 🤢"
-} else if (getCookie("streak") == "2"){
+} else if (localStorage.getItem("streak") == "2"){
   streakTxt = "2 Day Streak 🤢🐢"
-} else if (getCookie("streak") == "3"){
+} else if (localStorage.getItem("streak") == "3"){
   streakTxt = "3 Day Streak 🤢🐢🍏"
-}else if (getCookie("streak") == "4"){
+}else if (localStorage.getItem("streak") == "4"){
   streakTxt = "4 Day Streak 🤢🐢🍏📗"
-}else if (getCookie("streak") == "5"){
+}else if (localStorage.getItem("streak") == "5"){
   streakTxt = "5 Day Streak 🤢🐢🍏📗✅"
-}else if (getCookie("streak") == "6"){
+}else if (localStorage.getItem("streak") == "6"){
   streakTxt = "6 Day Streak ⭐🐢🍏📗✅"
-}else if (getCookie("streak") == "7"){
+}else if (localStorage.getItem("streak") == "7"){
   streakTxt = "7 Day Streak ⭐⭐🍏📗✅"
-}else if (getCookie("streak") == "8"){
+}else if (localStorage.getItem("streak") == "8"){
   streakTxt = "8 Day Streak ⭐⭐🌟📗✅"
-}else if (getCookie("streak") == "9"){
+}else if (localStorage.getItem("streak") == "9"){
   streakTxt = "9 Day Streak ⭐⭐🌟🌟✅"
-}else if (getCookie("streak") == "10"){
+}else if (localStorage.getItem("streak") == "10"){
   streakTxt = "10 Day Streak ⭐⭐🌟🌟💫"
-}else if (getCookie("streak") == "100"){
+}else if (localStorage.getItem("streak") == "100"){
   streakTxt = "100 Day Streak 💯💯💯💯💯"
-} else if (parseInt(getCookie("streak")) > 10 && (parseInt(getCookie("streak"))!= 100)){
-  streakTxt = `${getCookie("streak")} Day Streak ⭐⭐🌟🌟💫 `
+} else if (parseInt(localStorage.getItem("streak")) > 10 && (parseInt(localStorage.getItem("streak"))!= 100)){
+  streakTxt = `${localStorage.getItem("streak")} Day Streak ⭐⭐🌟🌟💫 `
 }
 
 document.getElementById("final-5").innerHTML=(streakTxt);
@@ -554,30 +583,30 @@ function copyFunction(){
 }
 
 let streakTxt = ""
-if(getCookie("streak") == "1"){
+if(localStorage.getItem("streak") == "1"){
   streakTxt = "1 Day Streak 🤢"
-} else if (getCookie("streak") == "2"){
+} else if (localStorage.getItem("streak") == "2"){
   streakTxt = "2 Day Streak 🤢🐢"
-} else if (getCookie("streak") == "3"){
+} else if (localStorage.getItem("streak") == "3"){
   streakTxt = "3 Day Streak 🤢🐢🍏"
-}else if (getCookie("streak") == "4"){
+}else if (localStorage.getItem("streak") == "4"){
   streakTxt = "4 Day Streak 🤢🐢🍏📗"
-}else if (getCookie("streak") == "5"){
+}else if (localStorage.getItem("streak") == "5"){
   streakTxt = "5 Day Streak 🤢🐢🍏📗✅"
-}else if (getCookie("streak") == "6"){
+}else if (localStorage.getItem("streak") == "6"){
   streakTxt = "6 Day Streak ⭐🐢🍏📗✅"
-}else if (getCookie("streak") == "7"){
+}else if (localStorage.getItem("streak") == "7"){
   streakTxt = "7 Day Streak ⭐⭐🍏📗✅"
-}else if (getCookie("streak") == "8"){
+}else if (localStorage.getItem("streak") == "8"){
   streakTxt = "8 Day Streak ⭐⭐🌟📗✅"
-}else if (getCookie("streak") == "9"){
+}else if (localStorage.getItem("streak") == "9"){
   streakTxt = "9 Day Streak ⭐⭐🌟🌟✅"
-}else if (getCookie("streak") == "10"){
+}else if (localStorage.getItem("streak") == "10"){
   streakTxt = "10 Day Streak ⭐⭐🌟🌟💫"
-}else if (getCookie("streak") == "100"){
+}else if (localStorage.getItem("streak") == "100"){
   streakTxt = "100 Day Streak 💯💯💯💯💯"
-} else if (parseInt(getCookie("streak")) > 10 && (parseInt(getCookie("streak"))!= 100)){
-  streakTxt = `${getCookie("streak")} Day Streak ⭐⭐🌟🌟💫 `
+} else if (parseInt(localStorage.getItem("streak")) > 10 && (parseInt(localStorage.getItem("streak"))!= 100)){
+  streakTxt = `${localStorage.getItem("streak")} Day Streak ⭐⭐🌟🌟💫 `
 }
 
   let attemptEmojis = ""
@@ -626,8 +655,8 @@ document.getElementById("plswork").value = copyString;
 ${counter} Attempts ${attemptEmojis}%0A
 ${hintTxt}%0A
 ${streakTxt}%0A
-backwords.xyz%0A`
-  const link = `https://twitter.com/intent/tweet?text=${twitterString}&hashtags=backwords`; 
+backwords.xyz`
+  const link = `https://twitter.com/intent/tweet?text=${twitterString}%0A&hashtags=backwords`; 
   document.getElementById("tweet-balls").href=link;
 
 }
