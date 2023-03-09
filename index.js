@@ -41,19 +41,10 @@ var orderArray2 = orderFile2.split("\n");
 
 
 
-if(getCookie('streak') == null){
-  localStorage.setItem("streak", '0');
-}
-
 
 if(getCookie("streak") == null){
   document.cookie = "streak=0;";
 };
-
-if(getCookie('hasGotten') == null || getCookie('hasGotten') == null){
-localStorage.setItem('guesses', '0');
-localStorage.setItem('hasGotten','false');
-}
 
 
 if(getCookie("hasGotten") == false || getCookie("hasGotten") == null){
@@ -76,11 +67,6 @@ function getCookie(name){
 }
 
 
-if(getCookie('currentDay') == null || getCookie('currentDay') == (dayN -1)){
-  localStorage.setItem("guesses", '0');
-  localStorage.setItem('hasGotten', 'false');
-  localStorage.setItem('currentDay', `${dayN}`);
-}
 
 if(getCookie("currentDay") == null || getCookie("currentDay") == (dayN -1 )){
   document.cookie = "guesses=0;";
@@ -88,12 +74,6 @@ if(getCookie("currentDay") == null || getCookie("currentDay") == (dayN -1 )){
  document.cookie = `currentDay=${dayN};`;
  }
 
- if(getCookie('currentDay') == null || getCookie("currentDay") <= (dayN -2)){
-  localStorage.setItem("guesses", '0');
-  localStorage.setItem('hasGotten', 'false');
-  localStorage.setItem('currentDay', `${dayN}`);
-  localStorage.setItem('streak', '0');
- }
 
  if(getCookie("currentDay") == null || getCookie("currentDay") <= (dayN -2 )){
   document.cookie = "guesses=0;";
@@ -385,8 +365,8 @@ if(number2 > 1000 || number2 == -1){
   {
     if(getCookie('hasGotten') != 'true' || getCookie('hasGotten') == null){
       streakN = parseInt(getCookie("streak"));
-    streakN++
-    localStorage.setItem= (`streak`,`${streakN}`);
+      streakN++
+      document.cookie = `streak=${streakN};`;
     }
 
      toggleshare();
@@ -409,7 +389,6 @@ if(number2 > 1000 || number2 == -1){
   counter++;
 
   document.cookie = `guesses=${counter};`;
-  localStorage.setItem('guesses', `${counter}`);
 };
 
 
@@ -469,7 +448,6 @@ function togglePopup() {
 }
 
 function toggleshare() {
-  window.localStorage.setItem('hasGotten', 'true');
   document.cookie = 'hasGotten=true;';
   document.getElementById("share-1").classList.toggle("active");
   document.getElementById("final-1").innerHTML=("The real phrase was: " + realPhrase)
