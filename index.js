@@ -469,7 +469,7 @@ function togglePopup() {
 }
 
 function toggleshare() {
-  localStorage.setItem('hasGotten', 'true');
+  window.localStorage.setItem('hasGotten', 'true');
   document.cookie = 'hasGotten=true;';
   document.getElementById("share-1").classList.toggle("active");
   document.getElementById("final-1").innerHTML=("The real phrase was: " + realPhrase)
