@@ -41,9 +41,20 @@ var orderArray2 = orderFile2.split("\n");
 
 
 
+if(getCookie('streak') == null){
+  localStorage.setItem("streak", '0');
+}
+
+
 if(getCookie("streak") == null){
   document.cookie = "streak=0;";
 };
+
+if(getCookie('hasGotten') == null || getCookie('hasGotten') == null){
+localStorage.setItem('guesses', '0');
+localStorage.setItem('hasGotten','false');
+}
+
 
 if(getCookie("hasGotten") == false || getCookie("hasGotten") == null){
 document.cookie = "guesses=0;";
@@ -65,11 +76,23 @@ function getCookie(name){
 }
 
 
+if(getCookie('currentDay') == null || getCookie('currentDay') == (dayN -1)){
+  localStorage.setItem("guesses", '0');
+  localStorage.setItem('hasGotten', 'false');
+  localStorage.setItem('currentDay', `${dayN}`);
+}
 
 if(getCookie("currentDay") == null || getCookie("currentDay") == (dayN -1 )){
   document.cookie = "guesses=0;";
  document.cookie = "hasGotten=false;";
  document.cookie = `currentDay=${dayN};`;
+ }
+
+ if(getCookie('currentDay') == null || getCookie("currentDay") <= (dayN -2)){
+  localStorage.setItem("guesses", '0');
+  localStorage.setItem('hasGotten', 'false');
+  localStorage.setItem('currentDay', `${dayN}`);
+  localStorage.setItem('streak', '0');
  }
 
  if(getCookie("currentDay") == null || getCookie("currentDay") <= (dayN -2 )){
@@ -80,7 +103,12 @@ if(getCookie("currentDay") == null || getCookie("currentDay") == (dayN -1 )){
  }
 
 
-
+if(getCookie('hasGotten') == ("true")){
+  counter = parseInt(getCookie('guessses')) -1;
+  toggleshare();
+} else {
+   document.getElementById("popup-1").classList.toggle("active")
+}
 
 if(getCookie("hasGotten") == "true"){
 counter = parseInt(getCookie("guesses")) -1;
@@ -355,13 +383,12 @@ if(number2 > 1000 || number2 == -1){
 
   if (number1 == 0 && number2 == 0)
   {
-    if(getCookie("hasGotten") != "true" || getCookie("hasGotten") == null){
-    streakN = parseInt(getCookie("streak"));
+    if(getCookie('hasGotten') != 'true' || getCookie('hasGotten') == null){
+      streakN = parseInt(getCookie("streak"));
     streakN++
-    console.log(streakN)
-    console.log("balls")
-    document.cookie = `streak=${streakN};`;
+    localStorage.setItem= (`streak`,`${streakN}`);
     }
+
      toggleshare();
   }
   verbal_hint1 = generateVerbalHint(
@@ -382,6 +409,7 @@ if(number2 > 1000 || number2 == -1){
   counter++;
 
   document.cookie = `guesses=${counter};`;
+  localStorage.setItem('guesses', `${counter}`);
 };
 
 
@@ -441,6 +469,7 @@ function togglePopup() {
 }
 
 function toggleshare() {
+  window.localStorage.setItem('hasGotten', 'true');
   document.cookie = 'hasGotten=true;';
   document.getElementById("share-1").classList.toggle("active");
   document.getElementById("final-1").innerHTML=("The real phrase was: " + realPhrase)
@@ -626,8 +655,8 @@ document.getElementById("plswork").value = copyString;
 ${counter} Attempts ${attemptEmojis}%0A
 ${hintTxt}%0A
 ${streakTxt}%0A
-backwords.xyz%0A`
-  const link = `https://twitter.com/intent/tweet?text=${twitterString}&hashtags=backwords`; 
+backwords.xyz`
+  const link = `https://twitter.com/intent/tweet?text=${twitterString}%0A&hashtags=backwords`; 
   document.getElementById("tweet-balls").href=link;
 
 }
