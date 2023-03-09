@@ -83,13 +83,6 @@ if(getCookie("currentDay") == null || getCookie("currentDay") == (dayN -1 )){
  }
 
 
-if(getCookie('hasGotten') == ("true")){
-  counter = parseInt(getCookie('guessses')) -1;
-  toggleshare();
-} else {
-   document.getElementById("popup-1").classList.toggle("active")
-}
-
 if(getCookie("hasGotten") == "true"){
 counter = parseInt(getCookie("guesses")) -1;
 toggleshare();
