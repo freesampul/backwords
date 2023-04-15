@@ -14,4 +14,3 @@ This game was intially created for a hackathon by Sam and Andrew and is now a fu
 Check it out!
 www.backwords.xyz
 
-now an app?
