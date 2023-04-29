@@ -15,4 +15,3 @@ This game was intially created for a hackathon by Sam and Andrew (@awesel) and i
 Check it out!
 www.backwords.xyz
 
-
