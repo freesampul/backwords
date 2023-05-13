@@ -13,4 +13,4 @@ Users are also told if they have any letters in common with the actual word.
 This game was intially created for a hackathon by Sam and Andrew (@awesel) and is now a fully functioning app!
 
 Check it out:
-www.backwords.xyz
+www.backwords.xyz!
