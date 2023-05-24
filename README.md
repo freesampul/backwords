@@ -17,3 +17,7 @@ www.backwords.xyz!
 
 
 (going to make this cycle every ~50 days)
+
+
+
+This is now depicto.ai
